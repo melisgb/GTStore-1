@@ -22,6 +22,8 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class ShoppingCart implements Serializable {
+    @OneToMany(mappedBy = "shoppingCart")
+    private List<ShoppingCartGame> shoppingCartGames;
     
     private static final long serialVersionUID = 1L;
     @Id
