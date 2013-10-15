@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateBillingAddressTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{billingAddressController.selected.id}" title="#{bundle.CreateBillingAddressTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_line1}" for="line1" />
+                    <h:inputText id="line1" value="#{billingAddressController.selected.line1}" title="#{bundle.CreateBillingAddressTitle_line1}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_line2}" for="line2" />
+                    <h:inputText id="line2" value="#{billingAddressController.selected.line2}" title="#{bundle.CreateBillingAddressTitle_line2}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_line3}" for="line3" />
+                    <h:inputText id="line3" value="#{billingAddressController.selected.line3}" title="#{bundle.CreateBillingAddressTitle_line3}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_city}" for="city" />
+                    <h:inputText id="city" value="#{billingAddressController.selected.city}" title="#{bundle.CreateBillingAddressTitle_city}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_province}" for="province" />
+                    <h:inputText id="province" value="#{billingAddressController.selected.province}" title="#{bundle.CreateBillingAddressTitle_province}" />
+                    <h:outputLabel value="#{bundle.CreateBillingAddressLabel_country}" for="country" />
+                    <h:inputText id="country" value="#{billingAddressController.selected.country}" title="#{bundle.CreateBillingAddressTitle_country}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{billingAddressController.create}" value="#{bundle.CreateBillingAddressSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{billingAddressController.prepareList}" value="#{bundle.CreateBillingAddressShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateBillingAddressIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
