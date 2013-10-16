@@ -5,36 +5,32 @@
 package com.gtstore.model;
 
 import java.io.Serializable;
-
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-
-import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author juliantejera
  */
 @Entity
-public class AlbumSong implements Serializable {
+public class GameGenre implements Serializable {
+    
     
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-  
-    @ManyToOne
-    @JoinColumn(name="albumId")
-    private Album album;
-
-    @ManyToOne
-    @JoinColumn(name="songId")
-    private Song song;
-
+    
+    private String name;
+    
+    // Associations
+    @OneToMany(mappedBy = "gameGenre")
+    private List<Game> games;
+    
     public Long getId() {
         return id;
     }
@@ -43,23 +39,22 @@ public class AlbumSong implements Serializable {
         this.id = id;
     }
 
-    public Album getAlbum() {
-        return album;
+    public String getName() {
+        return name;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Song getSong() {
-        return song;
+    public List<Game> getGames() {
+        return games;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -70,10 +65,10 @@ public class AlbumSong implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AlbumSong)) {
+        if (!(object instanceof GameGenre)) {
             return false;
         }
-        AlbumSong other = (AlbumSong) object;
+        GameGenre other = (GameGenre) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -82,7 +77,7 @@ public class AlbumSong implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.AlbumSong[ id=" + id + " ]";
+        return "com.gtstore.model.GameType[ id=" + id + " ]";
     }
     
 }

@@ -17,6 +17,14 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateGameLabel_id}" for="id" />
                     <h:inputText id="id" value="#{gameController.selected.id}" title="#{bundle.CreateGameTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateGameLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{gameController.selected.title}" title="#{bundle.CreateGameTitle_title}" />
+                    <h:outputLabel value="#{bundle.CreateGameLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{gameController.selected.price}" title="#{bundle.CreateGameTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateGameLabel_gameGenre}" for="gameGenre" />
+                    <h:selectOneMenu id="gameGenre" value="#{gameController.selected.gameGenre}" title="#{bundle.CreateGameTitle_gameGenre}" >
+                        <f:selectItems value="#{gameGenreController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{gameController.create}" value="#{bundle.CreateGameSaveLink}" />

@@ -42,8 +42,6 @@ public class ShoppingCart implements Serializable {
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartSong> shoppingCartSongs;
     @OneToMany(mappedBy = "shoppingCart")
-    private List<ShoppingCartAlbum> shoppingCartAlbums;
-    @OneToMany(mappedBy = "shoppingCart")
     private List<Purchase> purchases;
     public Long getId() {
         return id;
@@ -85,13 +83,6 @@ public class ShoppingCart implements Serializable {
         this.shoppingCartSongs = shoppingCartSongs;
     }
 
-    public List<ShoppingCartAlbum> getShoppingCartAlbums() {
-        return shoppingCartAlbums;
-    }
-
-    public void setShoppingCartAlbums(List<ShoppingCartAlbum> shoppingCartAlbums) {
-        this.shoppingCartAlbums = shoppingCartAlbums;
-    }
 
     public List<Purchase> getPurchases() {
         return purchases;

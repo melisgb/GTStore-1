@@ -32,6 +32,7 @@ public class Customer implements Serializable {
     private Date birthDate;
     private String email;
     private String gender;
+    private String role;
     
     // Associations
     
@@ -39,8 +40,6 @@ public class Customer implements Serializable {
     private List<ShoppingCart> shoppingCarts;
     @OneToMany(mappedBy = "customer")
     private List<Purchase> purchases;
-    @OneToMany(mappedBy = "customer")
-    private List<CustomerBillingAddress> customerBillingAddresses;
     @OneToMany(mappedBy = "Customer")
     private List<CreditCard> creditCards;
     
@@ -108,13 +107,6 @@ public class Customer implements Serializable {
         this.purchases = purchases;
     }
 
-    public List<CustomerBillingAddress> getCustomerBillingAddresses() {
-        return customerBillingAddresses;
-    }
-
-    public void setCustomerBillingAddresses(List<CustomerBillingAddress> customerBillingAddresses) {
-        this.customerBillingAddresses = customerBillingAddresses;
-    }
 
     public List<CreditCard> getCreditCards() {
         return creditCards;
@@ -123,7 +115,14 @@ public class Customer implements Serializable {
     public void setCreditCards(List<CreditCard> creditCards) {
         this.creditCards = creditCards;
     }
+    
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     
     @Override
     public int hashCode() {

@@ -31,7 +31,7 @@ public class Game implements Serializable {
     
     // Associations
     @ManyToOne
-    private GameType gameType;
+    private GameGenre gameGenre;
     
     @OneToMany(mappedBy = "game")
     private List<ShoppingCartGame> shoppingCartGames;
@@ -59,12 +59,12 @@ public class Game implements Serializable {
         this.price = price;
     }
 
-    public GameType getGameType() {
-        return gameType;
+    public GameGenre getGameGenre() {
+        return gameGenre;
     }
 
-    public void setGameType(GameType gameType) {
-        this.gameType = gameType;
+    public void setGameGenre(GameGenre gameGenre) {
+        this.gameGenre = gameGenre;
     }
 
     public List<ShoppingCartGame> getShoppingCartGames() {

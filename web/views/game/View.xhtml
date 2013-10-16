@@ -17,6 +17,12 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewGameLabel_id}"/>
                     <h:outputText value="#{gameController.selected.id}" title="#{bundle.ViewGameTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewGameLabel_title}"/>
+                    <h:outputText value="#{gameController.selected.title}" title="#{bundle.ViewGameTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewGameLabel_price}"/>
+                    <h:outputText value="#{gameController.selected.price}" title="#{bundle.ViewGameTitle_price}"/>
+                    <h:outputText value="#{bundle.ViewGameLabel_gameGenre}"/>
+                    <h:outputText value="#{gameController.selected.gameGenre}" title="#{bundle.ViewGameTitle_gameGenre}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{gameController.destroyAndView}" value="#{bundle.ViewGameDestroyLink}"/>

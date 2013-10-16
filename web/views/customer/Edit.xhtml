@@ -29,6 +29,8 @@
                     <h:inputText id="email" value="#{customerController.selected.email}" title="#{bundle.EditCustomerTitle_email}" />
                     <h:outputLabel value="#{bundle.EditCustomerLabel_gender}" for="gender" />
                     <h:inputText id="gender" value="#{customerController.selected.gender}" title="#{bundle.EditCustomerTitle_gender}" />
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_role}" for="role" />
+                    <h:inputText id="role" value="#{customerController.selected.role}" title="#{bundle.EditCustomerTitle_role}" />
                 </h:panelGrid>
                 <h:commandLink action="#{customerController.update}" value="#{bundle.EditCustomerSaveLink}"/>
                 <br />

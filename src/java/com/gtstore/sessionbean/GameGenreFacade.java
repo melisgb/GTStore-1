@@ -4,7 +4,7 @@
  */
 package com.gtstore.sessionbean;
 
-import com.gtstore.model.BillingAddress;
+import com.gtstore.model.GameGenre;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author juliantejera
  */
 @Stateless
-public class BillingAddressFacade extends AbstractFacade<BillingAddress> {
+public class GameGenreFacade extends AbstractFacade<GameGenre> {
     @PersistenceContext(unitName = "GTStorePU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class BillingAddressFacade extends AbstractFacade<BillingAddress> {
         return em;
     }
 
-    public BillingAddressFacade() {
-        super(BillingAddress.class);
+    public GameGenreFacade() {
+        super(GameGenre.class);
     }
     
 }

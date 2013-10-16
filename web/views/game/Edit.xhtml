@@ -17,6 +17,14 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditGameLabel_id}" for="id" />
                     <h:inputText id="id" value="#{gameController.selected.id}" title="#{bundle.EditGameTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditGameLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{gameController.selected.title}" title="#{bundle.EditGameTitle_title}" />
+                    <h:outputLabel value="#{bundle.EditGameLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{gameController.selected.price}" title="#{bundle.EditGameTitle_price}" />
+                    <h:outputLabel value="#{bundle.EditGameLabel_gameGenre}" for="gameGenre" />
+                    <h:selectOneMenu id="gameGenre" value="#{gameController.selected.gameGenre}" title="#{bundle.EditGameTitle_gameGenre}" >
+                        <f:selectItems value="#{gameGenreController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{gameController.update}" value="#{bundle.EditGameSaveLink}"/>
                 <br />

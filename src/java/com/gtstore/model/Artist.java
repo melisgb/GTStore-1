@@ -32,12 +32,8 @@ public class Artist implements Serializable {
     // Associations
     
     @OneToMany(mappedBy = "artist")
-    private List<Album> albums;
-    @OneToMany(mappedBy = "artist")
     private List<Song> songs;
-    @OneToMany(mappedBy = "artist")
-    private List<SongFeaturing> songFeaturings;
-    
+
     public Long getId() {
         return id;
     }
@@ -70,13 +66,6 @@ public class Artist implements Serializable {
         this.gender = gender;
     }
 
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-    }
 
     public List<Song> getSongs() {
         return songs;
@@ -86,13 +75,7 @@ public class Artist implements Serializable {
         this.songs = songs;
     }
 
-    public List<SongFeaturing> getSongFeaturings() {
-        return songFeaturings;
-    }
 
-    public void setSongFeaturings(List<SongFeaturing> songFeaturings) {
-        this.songFeaturings = songFeaturings;
-    }
     
     
     @Override

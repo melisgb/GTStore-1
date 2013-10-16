@@ -22,8 +22,6 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Song implements Serializable {
-    @OneToOne
-    private SongFeaturing songFeaturing;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,10 +39,7 @@ public class Song implements Serializable {
     @JoinColumn(name="musicGenreId")
     private MusicGenre musicGenre;
 
-    
-    @OneToMany(mappedBy = "song")
-    private List<AlbumSong> albumSongs;
-    
+   
     public Long getId() {
         return id;
     }
@@ -53,13 +48,6 @@ public class Song implements Serializable {
         this.id = id;
     }
 
-    public SongFeaturing getSongFeaturing() {
-        return songFeaturing;
-    }
-
-    public void setSongFeaturing(SongFeaturing songFeaturing) {
-        this.songFeaturing = songFeaturing;
-    }
 
     public String getTitle() {
         return title;
@@ -91,14 +79,6 @@ public class Song implements Serializable {
 
     public void setMusicGenre(MusicGenre musicGenre) {
         this.musicGenre = musicGenre;
-    }
-
-    public List<AlbumSong> getAlbumSongs() {
-        return albumSongs;
-    }
-
-    public void setAlbumSongs(List<AlbumSong> albumSongs) {
-        this.albumSongs = albumSongs;
     }
 
     @Override

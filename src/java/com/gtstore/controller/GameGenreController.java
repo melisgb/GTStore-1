@@ -1,9 +1,9 @@
 package com.gtstore.controller;
 
-import com.gtstore.model.ShoppingCartAlbum;
+import com.gtstore.model.GameGenre;
 import com.gtstore.controller.util.JsfUtil;
 import com.gtstore.controller.util.PaginationHelper;
-import com.gtstore.sessionbean.ShoppingCartAlbumFacade;
+import com.gtstore.sessionbean.GameGenreFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("shoppingCartAlbumController")
+@Named("gameGenreController")
 @SessionScoped
-public class ShoppingCartAlbumController implements Serializable {
+public class GameGenreController implements Serializable {
 
-    private ShoppingCartAlbum current;
+    private GameGenre current;
     private DataModel items = null;
     @EJB
-    private com.gtstore.sessionbean.ShoppingCartAlbumFacade ejbFacade;
+    private com.gtstore.sessionbean.GameGenreFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public ShoppingCartAlbumController() {
+    public GameGenreController() {
     }
 
-    public ShoppingCartAlbum getSelected() {
+    public GameGenre getSelected() {
         if (current == null) {
-            current = new ShoppingCartAlbum();
+            current = new GameGenre();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private ShoppingCartAlbumFacade getFacade() {
+    private GameGenreFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +67,13 @@ public class ShoppingCartAlbumController implements Serializable {
     }
 
     public String prepareView() {
-        current = (ShoppingCartAlbum) getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new ShoppingCartAlbum();
+        current = new GameGenre();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -81,7 +81,7 @@ public class ShoppingCartAlbumController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ShoppingCartAlbumCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GameGenreCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -90,7 +90,7 @@ public class ShoppingCartAlbumController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (ShoppingCartAlbum) getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -98,7 +98,7 @@ public class ShoppingCartAlbumController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ShoppingCartAlbumUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GameGenreUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -107,7 +107,7 @@ public class ShoppingCartAlbumController implements Serializable {
     }
 
     public String destroy() {
-        current = (ShoppingCartAlbum) getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -131,7 +131,7 @@ public class ShoppingCartAlbumController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ShoppingCartAlbumDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GameGenreDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -187,21 +187,21 @@ public class ShoppingCartAlbumController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public ShoppingCartAlbum getShoppingCartAlbum(java.lang.Long id) {
+    public GameGenre getGameGenre(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = ShoppingCartAlbum.class)
-    public static class ShoppingCartAlbumControllerConverter implements Converter {
+    @FacesConverter(forClass = GameGenre.class)
+    public static class GameGenreControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ShoppingCartAlbumController controller = (ShoppingCartAlbumController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "shoppingCartAlbumController");
-            return controller.getShoppingCartAlbum(getKey(value));
+            GameGenreController controller = (GameGenreController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "gameGenreController");
+            return controller.getGameGenre(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -221,11 +221,11 @@ public class ShoppingCartAlbumController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof ShoppingCartAlbum) {
-                ShoppingCartAlbum o = (ShoppingCartAlbum) object;
+            if (object instanceof GameGenre) {
+                GameGenre o = (GameGenre) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ShoppingCartAlbum.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + GameGenre.class.getName());
             }
         }
     }
