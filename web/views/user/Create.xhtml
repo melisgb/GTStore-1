@@ -29,12 +29,14 @@
                     <h:inputText id="email" value="#{userController.selected.email}" title="#{bundle.CreateUserTitle_email}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_gender}" for="gender" />
                     <h:inputText id="gender" value="#{userController.selected.gender}" title="#{bundle.CreateUserTitle_gender}" />
-                    <h:outputLabel value="#{bundle.CreateUserLabel_role}" for="role" />
-                    <h:inputText id="role" value="#{userController.selected.role}" title="#{bundle.CreateUserTitle_role}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />
                     <h:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUserTitle_password}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_username}" for="username" />
                     <h:inputText id="username" value="#{userController.selected.username}" title="#{bundle.CreateUserTitle_username}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_userGroup}" for="userGroup" />
+                    <h:selectOneMenu id="userGroup" value="#{userController.selected.userGroup}" title="#{bundle.CreateUserTitle_userGroup}" >
+                        <f:selectItems value="#{userGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{userController.create}" value="#{bundle.CreateUserSaveLink}" />

@@ -60,12 +60,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUserTitle_role}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.role}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListUserTitle_password}"/>
                             </f:facet>
                             <h:outputText value="#{item.password}"/>
@@ -75,6 +69,12 @@
                                 <h:outputText value="#{bundle.ListUserTitle_username}"/>
                             </f:facet>
                             <h:outputText value="#{item.username}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserTitle_userGroup}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userGroup}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

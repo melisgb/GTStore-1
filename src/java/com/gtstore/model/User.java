@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,22 +36,22 @@ public class User implements Serializable {
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name="userRole")
-    private String role;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date birthDate;
     private String email;
     private String gender;
     
-
+    
     // Associations
     
     @OneToMany(mappedBy = "user")
     private List<ShoppingCart> shoppingCarts;
     @OneToMany(mappedBy = "user")
     private List<Purchase> purchases;
-    @OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "user")
     private List<CreditCard> creditCards;
+    @ManyToOne
+    private UserGroup userGroup;
     
     public Long getId() {
         return id;
@@ -125,14 +126,6 @@ public class User implements Serializable {
         this.creditCards = creditCards;
     }
     
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -147,6 +140,14 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public UserGroup getUserGroup() {
+        return userGroup;
+    }
+
+    public void setUserGroup(UserGroup userGroup) {
+        this.userGroup = userGroup;
     }
     
     

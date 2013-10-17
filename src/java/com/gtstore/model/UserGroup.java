@@ -5,37 +5,30 @@
 package com.gtstore.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author juliantejera
  */
 @Entity
-public class CreditCard implements Serializable {
+@Table(name="UserGroup")
+public class UserGroup implements Serializable {
+    @OneToMany(mappedBy = "userGroup")
+    private List<User> users;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date expiresAt;
-    private String number;
-    
-    // Associations
-    
-    @ManyToOne
-    @JoinColumn(name="userId")
-    private User user;
-    
+    @Column(name="name")
+    private String name;
     public Long getId() {
         return id;
     }
@@ -44,31 +37,21 @@ public class CreditCard implements Serializable {
         this.id = id;
     }
 
-    public Date getExpiresAt() {
-        return expiresAt;
+    public String getName() {
+        return name;
     }
 
-    public void setExpiresAt(Date expiresAt) {
-        this.expiresAt = expiresAt;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNumber() {
-        return number;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User User) {
-        this.user = User;
-    }
-    
-    
 
     @Override
     public int hashCode() {
@@ -80,10 +63,10 @@ public class CreditCard implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CreditCard)) {
+        if (!(object instanceof UserGroup)) {
             return false;
         }
-        CreditCard other = (CreditCard) object;
+        UserGroup other = (UserGroup) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -92,7 +75,7 @@ public class CreditCard implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.CreditCard[ id=" + id + " ]";
+        return "com.gtstore.model.UserGroup[ id=" + id + " ]";
     }
     
 }

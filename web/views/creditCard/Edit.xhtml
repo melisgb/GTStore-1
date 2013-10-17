@@ -24,7 +24,9 @@
                     <h:outputLabel value="#{bundle.EditCreditCardLabel_number}" for="number" />
                     <h:inputText id="number" value="#{creditCardController.selected.number}" title="#{bundle.EditCreditCardTitle_number}" />
                     <h:outputLabel value="#{bundle.EditCreditCardLabel_user}" for="user" />
-                    <h:inputText id="user" value="#{creditCardController.selected.user}" title="#{bundle.EditCreditCardTitle_user}" />
+                    <h:selectOneMenu id="user" value="#{creditCardController.selected.user}" title="#{bundle.EditCreditCardTitle_user}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{creditCardController.update}" value="#{bundle.EditCreditCardSaveLink}"/>
                 <br />
