@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("shoppingCartSongController")
 @SessionScoped
 public class ShoppingCartSongController implements Serializable {
 
+
     private ShoppingCartSong current;
     private DataModel items = null;
-    @EJB
-    private com.gtstore.sessionbean.ShoppingCartSongFacade ejbFacade;
+    @EJB private com.gtstore.sessionbean.ShoppingCartSongFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,10 +44,10 @@ public class ShoppingCartSongController implements Serializable {
     private ShoppingCartSongFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -54,7 +55,7 @@ public class ShoppingCartSongController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,7 +68,7 @@ public class ShoppingCartSongController implements Serializable {
     }
 
     public String prepareView() {
-        current = (ShoppingCartSong) getItems().getRowData();
+        current = (ShoppingCartSong)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +91,7 @@ public class ShoppingCartSongController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (ShoppingCartSong) getItems().getRowData();
+        current = (ShoppingCartSong)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +108,7 @@ public class ShoppingCartSongController implements Serializable {
     }
 
     public String destroy() {
-        current = (ShoppingCartSong) getItems().getRowData();
+        current = (ShoppingCartSong)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +142,14 @@ public class ShoppingCartSongController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -191,7 +192,7 @@ public class ShoppingCartSongController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = ShoppingCartSong.class)
+    @FacesConverter(forClass=ShoppingCartSong.class)
     public static class ShoppingCartSongControllerConverter implements Converter {
 
         @Override
@@ -199,7 +200,7 @@ public class ShoppingCartSongController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ShoppingCartSongController controller = (ShoppingCartSongController) facesContext.getApplication().getELResolver().
+            ShoppingCartSongController controller = (ShoppingCartSongController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "shoppingCartSongController");
             return controller.getShoppingCartSong(getKey(value));
         }
@@ -225,8 +226,10 @@ public class ShoppingCartSongController implements Serializable {
                 ShoppingCartSong o = (ShoppingCartSong) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ShoppingCartSong.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+ShoppingCartSong.class.getName());
             }
         }
+
     }
+
 }

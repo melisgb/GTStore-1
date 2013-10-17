@@ -37,8 +37,8 @@ public class Purchase implements Serializable {
     @JoinColumn(name="creditCardId")
     private CreditCard creditCard;
     @ManyToOne
-    @JoinColumn(name="customerId")
-    private Customer customer;
+    @JoinColumn(name="userId")
+    private User user;
 
     
     public Long getId() {
@@ -73,12 +73,12 @@ public class Purchase implements Serializable {
         this.creditCard = creditCard;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

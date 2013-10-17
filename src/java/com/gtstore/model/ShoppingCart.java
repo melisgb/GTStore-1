@@ -35,8 +35,8 @@ public class ShoppingCart implements Serializable {
     // Associations
     
     @ManyToOne
-    @JoinColumn(name="customerId")
-    private Customer customer;
+    @JoinColumn(name="userId")
+    private User user;
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartMovie> shoppingCartMovies;
     @OneToMany(mappedBy = "shoppingCart")
@@ -59,12 +59,12 @@ public class ShoppingCart implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<ShoppingCartMovie> getShoppingCartMovies() {

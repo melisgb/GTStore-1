@@ -23,8 +23,8 @@
                     </h:inputText>
                     <h:outputLabel value="#{bundle.EditCreditCardLabel_number}" for="number" />
                     <h:inputText id="number" value="#{creditCardController.selected.number}" title="#{bundle.EditCreditCardTitle_number}" />
-                    <h:outputLabel value="#{bundle.EditCreditCardLabel_customer}" for="customer" />
-                    <h:inputText id="customer" value="#{creditCardController.selected.customer}" title="#{bundle.EditCreditCardTitle_customer}" />
+                    <h:outputLabel value="#{bundle.EditCreditCardLabel_user}" for="user" />
+                    <h:inputText id="user" value="#{creditCardController.selected.user}" title="#{bundle.EditCreditCardTitle_user}" />
                 </h:panelGrid>
                 <h:commandLink action="#{creditCardController.update}" value="#{bundle.EditCreditCardSaveLink}"/>
                 <br />

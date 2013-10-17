@@ -17,10 +17,6 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditSongLabel_id}" for="id" />
                     <h:inputText id="id" value="#{songController.selected.id}" title="#{bundle.EditSongTitle_id}" />
-                    <h:outputLabel value="#{bundle.EditSongLabel_songFeaturing}" for="songFeaturing" />
-                    <h:selectOneMenu id="songFeaturing" value="#{songController.selected.songFeaturing}" title="#{bundle.EditSongTitle_songFeaturing}" >
-                        <f:selectItems value="#{songFeaturingController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditSongLabel_title}" for="title" />
                     <h:inputText id="title" value="#{songController.selected.title}" title="#{bundle.EditSongTitle_title}" />
                     <h:outputLabel value="#{bundle.EditSongLabel_price}" for="price" />

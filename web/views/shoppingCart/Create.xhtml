@@ -21,9 +21,9 @@
                     <h:inputText id="createdAt" value="#{shoppingCartController.selected.createdAt}" title="#{bundle.CreateShoppingCartTitle_createdAt}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateShoppingCartLabel_customer}" for="customer" />
-                    <h:selectOneMenu id="customer" value="#{shoppingCartController.selected.customer}" title="#{bundle.CreateShoppingCartTitle_customer}" >
-                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    <h:outputLabel value="#{bundle.CreateShoppingCartLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{shoppingCartController.selected.user}" title="#{bundle.CreateShoppingCartTitle_user}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <br />

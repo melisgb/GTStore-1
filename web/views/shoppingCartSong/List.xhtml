@@ -10,52 +10,52 @@
             <h:outputText value="#{bundle.ListShoppingCartSongTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListShoppingCartSongEmpty}" rendered="#{shoppingCartSongController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{shoppingCartSongController.items.rowCount > 0}">
-                    <h:outputText value="#{shoppingCartSongController.pagination.pageFirstItem + 1}..#{shoppingCartSongController.pagination.pageLastItem + 1}/#{shoppingCartSongController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{shoppingCartSongController.previous}" value="#{bundle.Previous} #{shoppingCartSongController.pagination.pageSize}" rendered="#{shoppingCartSongController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{shoppingCartSongController.next}" value="#{bundle.Next} #{shoppingCartSongController.pagination.pageSize}" rendered="#{shoppingCartSongController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{shoppingCartSongController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListShoppingCartSongTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListShoppingCartSongTitle_shoppingCart}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.shoppingCart}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListShoppingCartSongTitle_song}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.song}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{shoppingCartSongController.prepareView}" value="#{bundle.ListShoppingCartSongViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{shoppingCartSongController.prepareEdit}" value="#{bundle.ListShoppingCartSongEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{shoppingCartSongController.destroy}" value="#{bundle.ListShoppingCartSongDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{shoppingCartSongController.prepareCreate}" value="#{bundle.ListShoppingCartSongCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListShoppingCartSongIndexLink}"/>
-            </h:form>
+        <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:outputText escape="false" value="#{bundle.ListShoppingCartSongEmpty}" rendered="#{shoppingCartSongController.items.rowCount == 0}"/>
+            <h:panelGroup rendered="#{shoppingCartSongController.items.rowCount > 0}">
+                <h:outputText value="#{shoppingCartSongController.pagination.pageFirstItem + 1}..#{shoppingCartSongController.pagination.pageLastItem + 1}/#{shoppingCartSongController.pagination.itemsCount}"/>&nbsp;
+                <h:commandLink action="#{shoppingCartSongController.previous}" value="#{bundle.Previous} #{shoppingCartSongController.pagination.pageSize}" rendered="#{shoppingCartSongController.pagination.hasPreviousPage}"/>&nbsp;
+                <h:commandLink action="#{shoppingCartSongController.next}" value="#{bundle.Next} #{shoppingCartSongController.pagination.pageSize}" rendered="#{shoppingCartSongController.pagination.hasNextPage}"/>&nbsp;
+                <h:dataTable value="#{shoppingCartSongController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListShoppingCartSongTitle_id}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListShoppingCartSongTitle_shoppingCart}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.shoppingCart}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListShoppingCartSongTitle_song}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.song}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+                        <h:commandLink action="#{shoppingCartSongController.prepareView}" value="#{bundle.ListShoppingCartSongViewLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{shoppingCartSongController.prepareEdit}" value="#{bundle.ListShoppingCartSongEditLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{shoppingCartSongController.destroy}" value="#{bundle.ListShoppingCartSongDestroyLink}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            <br />
+            <h:commandLink action="#{shoppingCartSongController.prepareCreate}" value="#{bundle.ListShoppingCartSongCreateLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.ListShoppingCartSongIndexLink}"/>
+        </h:form>
         </ui:define>
     </ui:composition>
 

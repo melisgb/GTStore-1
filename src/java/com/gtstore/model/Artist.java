@@ -24,13 +24,26 @@ public class Artist implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   
+    
+    /**
+     * Name of the artist
+     */
     private String name;
+    /**
+     * Is the Artist a band?
+     */
     private Boolean isBand;
+    /**
+     * The gender of the Artist
+     * Male / Female or Null
+     */
     private String gender;
     
     // Associations
     
+    /**
+     * List of songs sung by the artist
+     */
     @OneToMany(mappedBy = "artist")
     private List<Song> songs;
 

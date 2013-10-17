@@ -29,9 +29,9 @@
                     <h:selectOneMenu id="creditCard" value="#{purchaseController.selected.creditCard}" title="#{bundle.EditPurchaseTitle_creditCard}" >
                         <f:selectItems value="#{creditCardController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditPurchaseLabel_customer}" for="customer" />
-                    <h:selectOneMenu id="customer" value="#{purchaseController.selected.customer}" title="#{bundle.EditPurchaseTitle_customer}" >
-                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    <h:outputLabel value="#{bundle.EditPurchaseLabel_user}" for="user" />
+                    <h:selectOneMenu id="user" value="#{purchaseController.selected.user}" title="#{bundle.EditPurchaseTitle_user}" >
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandLink action="#{purchaseController.update}" value="#{bundle.EditPurchaseSaveLink}"/>

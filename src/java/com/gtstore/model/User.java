@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -19,7 +20,8 @@ import javax.persistence.Temporal;
  * @author juliantejera
  */
 @Entity
-public class Customer implements Serializable {
+@Table(name="GTUser")
+public class User implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,14 +35,15 @@ public class Customer implements Serializable {
     private String email;
     private String gender;
     private String role;
+    private String password;
     
     // Associations
     
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "user")
     private List<ShoppingCart> shoppingCarts;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "user")
     private List<Purchase> purchases;
-    @OneToMany(mappedBy = "Customer")
+    @OneToMany(mappedBy = "User")
     private List<CreditCard> creditCards;
     
     public Long getId() {
@@ -123,6 +126,15 @@ public class Customer implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     @Override
     public int hashCode() {
@@ -134,10 +146,10 @@ public class Customer implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Customer)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        Customer other = (Customer) object;
+        User other = (User) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -146,7 +158,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.Customer[ id=" + id + " ]";
+        return "com.juliantejera.jstore.User[ id=" + id + " ]";
     }
     
 }

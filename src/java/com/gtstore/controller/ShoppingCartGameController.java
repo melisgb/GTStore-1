@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("shoppingCartGameController")
 @SessionScoped
 public class ShoppingCartGameController implements Serializable {
 
+
     private ShoppingCartGame current;
     private DataModel items = null;
-    @EJB
-    private com.gtstore.sessionbean.ShoppingCartGameFacade ejbFacade;
+    @EJB private com.gtstore.sessionbean.ShoppingCartGameFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,10 +44,10 @@ public class ShoppingCartGameController implements Serializable {
     private ShoppingCartGameFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -54,7 +55,7 @@ public class ShoppingCartGameController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,7 +68,7 @@ public class ShoppingCartGameController implements Serializable {
     }
 
     public String prepareView() {
-        current = (ShoppingCartGame) getItems().getRowData();
+        current = (ShoppingCartGame)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +91,7 @@ public class ShoppingCartGameController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (ShoppingCartGame) getItems().getRowData();
+        current = (ShoppingCartGame)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +108,7 @@ public class ShoppingCartGameController implements Serializable {
     }
 
     public String destroy() {
-        current = (ShoppingCartGame) getItems().getRowData();
+        current = (ShoppingCartGame)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +142,14 @@ public class ShoppingCartGameController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -191,7 +192,7 @@ public class ShoppingCartGameController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = ShoppingCartGame.class)
+    @FacesConverter(forClass=ShoppingCartGame.class)
     public static class ShoppingCartGameControllerConverter implements Converter {
 
         @Override
@@ -199,7 +200,7 @@ public class ShoppingCartGameController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ShoppingCartGameController controller = (ShoppingCartGameController) facesContext.getApplication().getELResolver().
+            ShoppingCartGameController controller = (ShoppingCartGameController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "shoppingCartGameController");
             return controller.getShoppingCartGame(getKey(value));
         }
@@ -225,8 +226,10 @@ public class ShoppingCartGameController implements Serializable {
                 ShoppingCartGame o = (ShoppingCartGame) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ShoppingCartGame.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+ShoppingCartGame.class.getName());
             }
         }
+
     }
+
 }

@@ -21,8 +21,8 @@
                     <h:outputText value="#{shoppingCartController.selected.createdAt}" title="#{bundle.ViewShoppingCartTitle_createdAt}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
-                    <h:outputText value="#{bundle.ViewShoppingCartLabel_customer}"/>
-                    <h:outputText value="#{shoppingCartController.selected.customer}" title="#{bundle.ViewShoppingCartTitle_customer}"/>
+                    <h:outputText value="#{bundle.ViewShoppingCartLabel_user}"/>
+                    <h:outputText value="#{shoppingCartController.selected.user}" title="#{bundle.ViewShoppingCartTitle_user}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{shoppingCartController.destroyAndView}" value="#{bundle.ViewShoppingCartDestroyLink}"/>

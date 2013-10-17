@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("shoppingCartMovieController")
 @SessionScoped
 public class ShoppingCartMovieController implements Serializable {
 
+
     private ShoppingCartMovie current;
     private DataModel items = null;
-    @EJB
-    private com.gtstore.sessionbean.ShoppingCartMovieFacade ejbFacade;
+    @EJB private com.gtstore.sessionbean.ShoppingCartMovieFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,10 +44,10 @@ public class ShoppingCartMovieController implements Serializable {
     private ShoppingCartMovieFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -54,7 +55,7 @@ public class ShoppingCartMovieController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,7 +68,7 @@ public class ShoppingCartMovieController implements Serializable {
     }
 
     public String prepareView() {
-        current = (ShoppingCartMovie) getItems().getRowData();
+        current = (ShoppingCartMovie)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +91,7 @@ public class ShoppingCartMovieController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (ShoppingCartMovie) getItems().getRowData();
+        current = (ShoppingCartMovie)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +108,7 @@ public class ShoppingCartMovieController implements Serializable {
     }
 
     public String destroy() {
-        current = (ShoppingCartMovie) getItems().getRowData();
+        current = (ShoppingCartMovie)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +142,14 @@ public class ShoppingCartMovieController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -191,7 +192,7 @@ public class ShoppingCartMovieController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = ShoppingCartMovie.class)
+    @FacesConverter(forClass=ShoppingCartMovie.class)
     public static class ShoppingCartMovieControllerConverter implements Converter {
 
         @Override
@@ -199,7 +200,7 @@ public class ShoppingCartMovieController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ShoppingCartMovieController controller = (ShoppingCartMovieController) facesContext.getApplication().getELResolver().
+            ShoppingCartMovieController controller = (ShoppingCartMovieController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "shoppingCartMovieController");
             return controller.getShoppingCartMovie(getKey(value));
         }
@@ -225,8 +226,10 @@ public class ShoppingCartMovieController implements Serializable {
                 ShoppingCartMovie o = (ShoppingCartMovie) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ShoppingCartMovie.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+ShoppingCartMovie.class.getName());
             }
         }
+
     }
+
 }

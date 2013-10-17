@@ -33,8 +33,8 @@ public class CreditCard implements Serializable {
     // Associations
     
     @ManyToOne
-    @JoinColumn(name="customerId")
-    private Customer Customer;
+    @JoinColumn(name="userId")
+    private User User;
     
     public Long getId() {
         return id;
@@ -60,12 +60,12 @@ public class CreditCard implements Serializable {
         this.number = number;
     }
 
-    public Customer getCustomer() {
-        return Customer;
+    public User getUser() {
+        return User;
     }
 
-    public void setCustomer(Customer Customer) {
-        this.Customer = Customer;
+    public void setUser(User User) {
+        this.User = User;
     }
     
     

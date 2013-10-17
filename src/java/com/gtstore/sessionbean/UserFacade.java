@@ -4,7 +4,7 @@
  */
 package com.gtstore.sessionbean;
 
-import com.gtstore.model.Customer;
+import com.gtstore.model.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author juliantejera
  */
 @Stateless
-public class CustomerFacade extends AbstractFacade<Customer> {
+public class UserFacade extends AbstractFacade<User> {
     @PersistenceContext(unitName = "GTStorePU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class CustomerFacade extends AbstractFacade<Customer> {
         return em;
     }
 
-    public CustomerFacade() {
-        super(Customer.class);
+    public UserFacade() {
+        super(User.class);
     }
     
 }

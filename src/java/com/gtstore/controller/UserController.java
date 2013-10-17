@@ -1,9 +1,9 @@
 package com.gtstore.controller;
 
-import com.gtstore.model.Customer;
+import com.gtstore.model.User;
 import com.gtstore.controller.util.JsfUtil;
 import com.gtstore.controller.util.PaginationHelper;
-import com.gtstore.sessionbean.CustomerFacade;
+import com.gtstore.sessionbean.UserFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -18,29 +18,29 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("customerController")
+@Named("userController")
 @SessionScoped
-public class CustomerController implements Serializable {
+public class UserController implements Serializable {
 
-    private Customer current;
+    private User current;
     private DataModel items = null;
     @EJB
-    private com.gtstore.sessionbean.CustomerFacade ejbFacade;
+    private com.gtstore.sessionbean.UserFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
-    public CustomerController() {
+    public UserController() {
     }
 
-    public Customer getSelected() {
+    public User getSelected() {
         if (current == null) {
-            current = new Customer();
+            current = new User();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private CustomerFacade getFacade() {
+    private UserFacade getFacade() {
         return ejbFacade;
     }
 
@@ -67,13 +67,13 @@ public class CustomerController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Customer) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Customer();
+        current = new User();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -81,7 +81,7 @@ public class CustomerController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CustomerCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -90,7 +90,7 @@ public class CustomerController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Customer) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -98,7 +98,7 @@ public class CustomerController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CustomerUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
             return "View";
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
@@ -107,7 +107,7 @@ public class CustomerController implements Serializable {
     }
 
     public String destroy() {
-        current = (Customer) getItems().getRowData();
+        current = (User) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -131,7 +131,7 @@ public class CustomerController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CustomerDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
@@ -187,21 +187,21 @@ public class CustomerController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public Customer getCustomer(java.lang.Long id) {
+    public User getUser(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Customer.class)
-    public static class CustomerControllerConverter implements Converter {
+    @FacesConverter(forClass = User.class)
+    public static class UserControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CustomerController controller = (CustomerController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "customerController");
-            return controller.getCustomer(getKey(value));
+            UserController controller = (UserController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "userController");
+            return controller.getUser(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -221,11 +221,11 @@ public class CustomerController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Customer) {
-                Customer o = (Customer) object;
+            if (object instanceof User) {
+                User o = (User) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Customer.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + User.class.getName());
             }
         }
     }

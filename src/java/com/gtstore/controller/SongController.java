@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("songController")
 @SessionScoped
 public class SongController implements Serializable {
 
+
     private Song current;
     private DataModel items = null;
-    @EJB
-    private com.gtstore.sessionbean.SongFacade ejbFacade;
+    @EJB private com.gtstore.sessionbean.SongFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,10 +44,10 @@ public class SongController implements Serializable {
     private SongFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -54,7 +55,7 @@ public class SongController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,7 +68,7 @@ public class SongController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Song) getItems().getRowData();
+        current = (Song)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +91,7 @@ public class SongController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Song) getItems().getRowData();
+        current = (Song)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +108,7 @@ public class SongController implements Serializable {
     }
 
     public String destroy() {
-        current = (Song) getItems().getRowData();
+        current = (Song)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +142,14 @@ public class SongController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -191,7 +192,7 @@ public class SongController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = Song.class)
+    @FacesConverter(forClass=Song.class)
     public static class SongControllerConverter implements Converter {
 
         @Override
@@ -199,7 +200,7 @@ public class SongController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            SongController controller = (SongController) facesContext.getApplication().getELResolver().
+            SongController controller = (SongController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "songController");
             return controller.getSong(getKey(value));
         }
@@ -225,8 +226,10 @@ public class SongController implements Serializable {
                 Song o = (Song) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Song.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+Song.class.getName());
             }
         }
+
     }
+
 }
