@@ -7,6 +7,7 @@ package com.gtstore.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,13 +31,18 @@ public class User implements Serializable {
     
     private String firstName;
     private String lastName;
+    @Column(name="username")
+    private String username;
+    @Column(name="password")
+    private String password;
+    @Column(name="userRole")
+    private String role;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date birthDate;
     private String email;
     private String gender;
-    private String role;
-    private String password;
     
+
     // Associations
     
     @OneToMany(mappedBy = "user")
@@ -133,6 +139,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     

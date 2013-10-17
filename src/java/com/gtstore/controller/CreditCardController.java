@@ -18,15 +18,14 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
 @Named("creditCardController")
 @SessionScoped
 public class CreditCardController implements Serializable {
 
-
     private CreditCard current;
     private DataModel items = null;
-    @EJB private com.gtstore.sessionbean.CreditCardFacade ejbFacade;
+    @EJB
+    private com.gtstore.sessionbean.CreditCardFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -44,10 +43,10 @@ public class CreditCardController implements Serializable {
     private CreditCardFacade getFacade() {
         return ejbFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
-
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -55,7 +54,7 @@ public class CreditCardController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -68,7 +67,7 @@ public class CreditCardController implements Serializable {
     }
 
     public String prepareView() {
-        current = (CreditCard)getItems().getRowData();
+        current = (CreditCard) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -91,7 +90,7 @@ public class CreditCardController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (CreditCard)getItems().getRowData();
+        current = (CreditCard) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -108,7 +107,7 @@ public class CreditCardController implements Serializable {
     }
 
     public String destroy() {
-        current = (CreditCard)getItems().getRowData();
+        current = (CreditCard) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -142,14 +141,14 @@ public class CreditCardController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -192,7 +191,7 @@ public class CreditCardController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass=CreditCard.class)
+    @FacesConverter(forClass = CreditCard.class)
     public static class CreditCardControllerConverter implements Converter {
 
         @Override
@@ -200,7 +199,7 @@ public class CreditCardController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CreditCardController controller = (CreditCardController)facesContext.getApplication().getELResolver().
+            CreditCardController controller = (CreditCardController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "creditCardController");
             return controller.getCreditCard(getKey(value));
         }
@@ -226,10 +225,8 @@ public class CreditCardController implements Serializable {
                 CreditCard o = (CreditCard) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+CreditCard.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + CreditCard.class.getName());
             }
         }
-
     }
-
 }

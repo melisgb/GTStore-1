@@ -10,52 +10,52 @@
             <h:outputText value="#{bundle.ListShoppingCartMovieTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-        <h:form styleClass="jsfcrud_list_form">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:outputText escape="false" value="#{bundle.ListShoppingCartMovieEmpty}" rendered="#{shoppingCartMovieController.items.rowCount == 0}"/>
-            <h:panelGroup rendered="#{shoppingCartMovieController.items.rowCount > 0}">
-                <h:outputText value="#{shoppingCartMovieController.pagination.pageFirstItem + 1}..#{shoppingCartMovieController.pagination.pageLastItem + 1}/#{shoppingCartMovieController.pagination.itemsCount}"/>&nbsp;
-                <h:commandLink action="#{shoppingCartMovieController.previous}" value="#{bundle.Previous} #{shoppingCartMovieController.pagination.pageSize}" rendered="#{shoppingCartMovieController.pagination.hasPreviousPage}"/>&nbsp;
-                <h:commandLink action="#{shoppingCartMovieController.next}" value="#{bundle.Next} #{shoppingCartMovieController.pagination.pageSize}" rendered="#{shoppingCartMovieController.pagination.hasNextPage}"/>&nbsp;
-                <h:dataTable value="#{shoppingCartMovieController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListShoppingCartMovieTitle_id}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.id}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListShoppingCartMovieTitle_shoppingCart}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.shoppingCart}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="#{bundle.ListShoppingCartMovieTitle_movie}"/>
-                        </f:facet>
-                        <h:outputText value="#{item.movie}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="&nbsp;"/>
-                        </f:facet>
-                        <h:commandLink action="#{shoppingCartMovieController.prepareView}" value="#{bundle.ListShoppingCartMovieViewLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{shoppingCartMovieController.prepareEdit}" value="#{bundle.ListShoppingCartMovieEditLink}"/>
-                        <h:outputText value=" "/>
-                        <h:commandLink action="#{shoppingCartMovieController.destroy}" value="#{bundle.ListShoppingCartMovieDestroyLink}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:panelGroup>
-            <br />
-            <h:commandLink action="#{shoppingCartMovieController.prepareCreate}" value="#{bundle.ListShoppingCartMovieCreateLink}"/>
-            <br />
-            <br />
-            <h:link outcome="/index" value="#{bundle.ListShoppingCartMovieIndexLink}"/>
-        </h:form>
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListShoppingCartMovieEmpty}" rendered="#{shoppingCartMovieController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{shoppingCartMovieController.items.rowCount > 0}">
+                    <h:outputText value="#{shoppingCartMovieController.pagination.pageFirstItem + 1}..#{shoppingCartMovieController.pagination.pageLastItem + 1}/#{shoppingCartMovieController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{shoppingCartMovieController.previous}" value="#{bundle.Previous} #{shoppingCartMovieController.pagination.pageSize}" rendered="#{shoppingCartMovieController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{shoppingCartMovieController.next}" value="#{bundle.Next} #{shoppingCartMovieController.pagination.pageSize}" rendered="#{shoppingCartMovieController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{shoppingCartMovieController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListShoppingCartMovieTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListShoppingCartMovieTitle_shoppingCart}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.shoppingCart}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListShoppingCartMovieTitle_movie}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.movie}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{shoppingCartMovieController.prepareView}" value="#{bundle.ListShoppingCartMovieViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{shoppingCartMovieController.prepareEdit}" value="#{bundle.ListShoppingCartMovieEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{shoppingCartMovieController.destroy}" value="#{bundle.ListShoppingCartMovieDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{shoppingCartMovieController.prepareCreate}" value="#{bundle.ListShoppingCartMovieCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListShoppingCartMovieIndexLink}"/>
+            </h:form>
         </ui:define>
     </ui:composition>
 

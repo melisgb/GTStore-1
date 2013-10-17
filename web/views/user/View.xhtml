@@ -33,6 +33,8 @@
                     <h:outputText value="#{userController.selected.role}" title="#{bundle.ViewUserTitle_role}"/>
                     <h:outputText value="#{bundle.ViewUserLabel_password}"/>
                     <h:outputText value="#{userController.selected.password}" title="#{bundle.ViewUserTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewUserLabel_username}"/>
+                    <h:outputText value="#{userController.selected.username}" title="#{bundle.ViewUserTitle_username}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{userController.destroyAndView}" value="#{bundle.ViewUserDestroyLink}"/>

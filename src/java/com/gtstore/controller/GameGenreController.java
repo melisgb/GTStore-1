@@ -18,15 +18,14 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
 @Named("gameGenreController")
 @SessionScoped
 public class GameGenreController implements Serializable {
 
-
     private GameGenre current;
     private DataModel items = null;
-    @EJB private com.gtstore.sessionbean.GameGenreFacade ejbFacade;
+    @EJB
+    private com.gtstore.sessionbean.GameGenreFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -44,10 +43,10 @@ public class GameGenreController implements Serializable {
     private GameGenreFacade getFacade() {
         return ejbFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
-
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -55,7 +54,7 @@ public class GameGenreController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -68,7 +67,7 @@ public class GameGenreController implements Serializable {
     }
 
     public String prepareView() {
-        current = (GameGenre)getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -91,7 +90,7 @@ public class GameGenreController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (GameGenre)getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -108,7 +107,7 @@ public class GameGenreController implements Serializable {
     }
 
     public String destroy() {
-        current = (GameGenre)getItems().getRowData();
+        current = (GameGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -142,14 +141,14 @@ public class GameGenreController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -192,7 +191,7 @@ public class GameGenreController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass=GameGenre.class)
+    @FacesConverter(forClass = GameGenre.class)
     public static class GameGenreControllerConverter implements Converter {
 
         @Override
@@ -200,7 +199,7 @@ public class GameGenreController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            GameGenreController controller = (GameGenreController)facesContext.getApplication().getELResolver().
+            GameGenreController controller = (GameGenreController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "gameGenreController");
             return controller.getGameGenre(getKey(value));
         }
@@ -226,10 +225,8 @@ public class GameGenreController implements Serializable {
                 GameGenre o = (GameGenre) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+GameGenre.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + GameGenre.class.getName());
             }
         }
-
     }
-
 }

@@ -18,15 +18,14 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-
 @Named("movieGenreController")
 @SessionScoped
 public class MovieGenreController implements Serializable {
 
-
     private MovieGenre current;
     private DataModel items = null;
-    @EJB private com.gtstore.sessionbean.MovieGenreFacade ejbFacade;
+    @EJB
+    private com.gtstore.sessionbean.MovieGenreFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -44,10 +43,10 @@ public class MovieGenreController implements Serializable {
     private MovieGenreFacade getFacade() {
         return ejbFacade;
     }
+
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
-
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -55,7 +54,7 @@ public class MovieGenreController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -68,7 +67,7 @@ public class MovieGenreController implements Serializable {
     }
 
     public String prepareView() {
-        current = (MovieGenre)getItems().getRowData();
+        current = (MovieGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -91,7 +90,7 @@ public class MovieGenreController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (MovieGenre)getItems().getRowData();
+        current = (MovieGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -108,7 +107,7 @@ public class MovieGenreController implements Serializable {
     }
 
     public String destroy() {
-        current = (MovieGenre)getItems().getRowData();
+        current = (MovieGenre) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -142,14 +141,14 @@ public class MovieGenreController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -192,7 +191,7 @@ public class MovieGenreController implements Serializable {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass=MovieGenre.class)
+    @FacesConverter(forClass = MovieGenre.class)
     public static class MovieGenreControllerConverter implements Converter {
 
         @Override
@@ -200,7 +199,7 @@ public class MovieGenreController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            MovieGenreController controller = (MovieGenreController)facesContext.getApplication().getELResolver().
+            MovieGenreController controller = (MovieGenreController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "movieGenreController");
             return controller.getMovieGenre(getKey(value));
         }
@@ -226,10 +225,8 @@ public class MovieGenreController implements Serializable {
                 MovieGenre o = (MovieGenre) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+MovieGenre.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + MovieGenre.class.getName());
             }
         }
-
     }
-
 }
