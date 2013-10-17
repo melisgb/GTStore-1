@@ -25,6 +25,8 @@
                     <h:selectOneMenu id="song" value="#{shoppingCartSongController.selected.song}" title="#{bundle.CreateShoppingCartSongTitle_song}" >
                         <f:selectItems value="#{songController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateShoppingCartSongLabel_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{shoppingCartSongController.selected.amount}" title="#{bundle.CreateShoppingCartSongTitle_amount}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{shoppingCartSongController.create}" value="#{bundle.CreateShoppingCartSongSaveLink}" />

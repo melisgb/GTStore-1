@@ -17,16 +17,10 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateUserLabel_id}" for="id" />
                     <h:inputText id="id" value="#{userController.selected.id}" title="#{bundle.CreateUserTitle_id}" />
-                    <h:outputLabel value="#{bundle.CreateUserLabel_firstName}" for="firstName" />
-                    <h:inputText id="firstName" value="#{userController.selected.firstName}" title="#{bundle.CreateUserTitle_firstName}" />
-                    <h:outputLabel value="#{bundle.CreateUserLabel_lastName}" for="lastName" />
-                    <h:inputText id="lastName" value="#{userController.selected.lastName}" title="#{bundle.CreateUserTitle_lastName}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_birthDate}" for="birthDate" />
                     <h:inputText id="birthDate" value="#{userController.selected.birthDate}" title="#{bundle.CreateUserTitle_birthDate}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateUserLabel_email}" for="email" />
-                    <h:inputText id="email" value="#{userController.selected.email}" title="#{bundle.CreateUserTitle_email}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_gender}" for="gender" />
                     <h:inputText id="gender" value="#{userController.selected.gender}" title="#{bundle.CreateUserTitle_gender}" />
                     <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />

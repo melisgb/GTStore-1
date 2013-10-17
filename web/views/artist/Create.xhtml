@@ -19,10 +19,6 @@
                     <h:inputText id="id" value="#{artistController.selected.id}" title="#{bundle.CreateArtistTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateArtistLabel_name}" for="name" />
                     <h:inputText id="name" value="#{artistController.selected.name}" title="#{bundle.CreateArtistTitle_name}" />
-                    <h:outputLabel value="#{bundle.CreateArtistLabel_isBand}" for="isBand" />
-                    <h:inputText id="isBand" value="#{artistController.selected.isBand}" title="#{bundle.CreateArtistTitle_isBand}" />
-                    <h:outputLabel value="#{bundle.CreateArtistLabel_gender}" for="gender" />
-                    <h:inputText id="gender" value="#{artistController.selected.gender}" title="#{bundle.CreateArtistTitle_gender}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{artistController.create}" value="#{bundle.CreateArtistSaveLink}" />

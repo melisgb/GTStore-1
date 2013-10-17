@@ -34,18 +34,6 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListArtistTitle_isBand}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.isBand}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListArtistTitle_gender}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.gender}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
                             <h:commandLink action="#{artistController.prepareView}" value="#{bundle.ListArtistViewLink}"/>

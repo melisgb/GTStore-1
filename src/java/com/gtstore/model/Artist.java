@@ -6,17 +6,20 @@ package com.gtstore.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author juliantejera
  */
 @Entity
+@Table(name="Artist")
 public class Artist implements Serializable {
     
     
@@ -28,17 +31,12 @@ public class Artist implements Serializable {
     /**
      * Name of the artist
      */
+    @Column(name="name")
     private String name;
     /**
      * Is the Artist a band?
      */
-    private Boolean isBand;
-    /**
-     * The gender of the Artist
-     * Male / Female or Null
-     */
-    private String gender;
-    
+
     // Associations
     
     /**
@@ -62,23 +60,6 @@ public class Artist implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Boolean getIsBand() {
-        return isBand;
-    }
-
-    public void setIsBand(Boolean isBand) {
-        this.isBand = isBand;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
 
     public List<Song> getSongs() {
         return songs;

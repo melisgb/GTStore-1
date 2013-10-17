@@ -5,23 +5,27 @@
 package com.gtstore.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author juliantejera
  */
 @Entity
+@Table(name="ShoppingCartGame")
 public class ShoppingCartGame implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+    @Column(name="amount")
+    private int amount;
     // Associations
     @ManyToOne
     private ShoppingCart shoppingCart;
@@ -49,6 +53,14 @@ public class ShoppingCartGame implements Serializable {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override

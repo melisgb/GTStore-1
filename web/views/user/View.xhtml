@@ -17,16 +17,10 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewUserLabel_id}"/>
                     <h:outputText value="#{userController.selected.id}" title="#{bundle.ViewUserTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_firstName}"/>
-                    <h:outputText value="#{userController.selected.firstName}" title="#{bundle.ViewUserTitle_firstName}"/>
-                    <h:outputText value="#{bundle.ViewUserLabel_lastName}"/>
-                    <h:outputText value="#{userController.selected.lastName}" title="#{bundle.ViewUserTitle_lastName}"/>
                     <h:outputText value="#{bundle.ViewUserLabel_birthDate}"/>
                     <h:outputText value="#{userController.selected.birthDate}" title="#{bundle.ViewUserTitle_birthDate}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
-                    <h:outputText value="#{bundle.ViewUserLabel_email}"/>
-                    <h:outputText value="#{userController.selected.email}" title="#{bundle.ViewUserTitle_email}"/>
                     <h:outputText value="#{bundle.ViewUserLabel_gender}"/>
                     <h:outputText value="#{userController.selected.gender}" title="#{bundle.ViewUserTitle_gender}"/>
                     <h:outputText value="#{bundle.ViewUserLabel_password}"/>

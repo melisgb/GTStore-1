@@ -25,6 +25,8 @@
                     <h:selectOneMenu id="movie" value="#{shoppingCartMovieController.selected.movie}" title="#{bundle.EditShoppingCartMovieTitle_movie}" >
                         <f:selectItems value="#{movieController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditShoppingCartMovieLabel_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{shoppingCartMovieController.selected.amount}" title="#{bundle.EditShoppingCartMovieTitle_amount}" />
                 </h:panelGrid>
                 <h:commandLink action="#{shoppingCartMovieController.update}" value="#{bundle.EditShoppingCartMovieSaveLink}"/>
                 <br />

@@ -7,6 +7,7 @@ package com.gtstore.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +23,7 @@ import javax.persistence.Temporal;
  * @author juliantejera
  */
 @Entity
+@Table(name="ShoppingCart")
 public class ShoppingCart implements Serializable {
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartGame> shoppingCartGames;
@@ -30,6 +33,7 @@ public class ShoppingCart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name="createdAt")
     private Date createdAt;
     
     // Associations

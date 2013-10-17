@@ -25,6 +25,8 @@
                     <h:selectOneMenu id="game" value="#{shoppingCartGameController.selected.game}" title="#{bundle.CreateShoppingCartGameTitle_game}" >
                         <f:selectItems value="#{gameController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateShoppingCartGameLabel_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{shoppingCartGameController.selected.amount}" title="#{bundle.CreateShoppingCartGameTitle_amount}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{shoppingCartGameController.create}" value="#{bundle.CreateShoppingCartGameSaveLink}" />
