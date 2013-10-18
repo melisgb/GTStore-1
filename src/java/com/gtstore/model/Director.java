@@ -27,13 +27,22 @@ public class Director implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    /**
+     * First name
+     */
     @Column(name="firstName")
     private String firstName;
+    /**
+     * Last name
+     */
     @Column(name="lastName")
     private String lastName;
     
     // Associations
     
+    /**
+     * List of movies made by the director
+     */
     @OneToMany(mappedBy = "director")
     private List<Movie> movies;
     public Long getId() {

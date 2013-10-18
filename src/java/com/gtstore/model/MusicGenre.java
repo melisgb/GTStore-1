@@ -23,6 +23,10 @@ public class MusicGenre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    /**
+     * Name of the genre
+     */
     @Column(name="name")
     private String name;
     

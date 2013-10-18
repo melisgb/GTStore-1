@@ -25,6 +25,10 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="ShoppingCart")
 public class ShoppingCart implements Serializable {
+    
+    /**
+     * Games in the shopping cart
+     */
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartGame> shoppingCartGames;
     
@@ -32,19 +36,36 @@ public class ShoppingCart implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    /**
+     * Date of creation of shopping cart
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name="createdAt")
     private Date createdAt;
     
     // Associations
     
+    /**
+     * User whom owns the cart
+     */
     @ManyToOne
     @JoinColumn(name="userId")
     private User user;
+    
+    /**
+     * Movies in the cart
+     */
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartMovie> shoppingCartMovies;
+    
+    /**
+     * Songs in the cart
+     */
     @OneToMany(mappedBy = "shoppingCart")
     private List<ShoppingCartSong> shoppingCartSongs;
+    
+    
     @OneToMany(mappedBy = "shoppingCart")
     private List<Purchase> purchases;
     public Long getId() {

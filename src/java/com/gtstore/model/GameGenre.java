@@ -27,10 +27,16 @@ public class GameGenre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * Name of the genre
+     */
     @Column(name="name")
     private String name;
     
     // Associations
+    /**
+     * Games that have this genre
+     */
     @OneToMany(mappedBy = "gameGenre")
     private List<Game> games;
     

@@ -26,6 +26,10 @@ public class ShoppingCartSong implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    /**
+     * 
+     */
     @Column(name="amount")
     private int amount;
     // Associations

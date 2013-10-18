@@ -26,6 +26,10 @@ public class ShoppingCartMovie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    /**
+     * Amount of movies in the cart
+     */
     @Column(name="amount")
     private int amount;
     // Associations

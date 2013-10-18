@@ -28,15 +28,25 @@ public class Game implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * Title of the game
+     */
     @Column(name="title")
     private String title;
+    /**
+     * Price of the game
+     */
     @Column(name="price")
     private Double price;
     
     
     // Associations
+    /**
+     * Genre of the game
+     */
     @ManyToOne
     private GameGenre gameGenre;
+    
     
     @OneToMany(mappedBy = "game")
     private List<ShoppingCartGame> shoppingCartGames;

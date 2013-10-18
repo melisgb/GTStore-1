@@ -23,6 +23,10 @@ public class MovieGenre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    /**
+     * Name of the movie genre
+     */
     @Column(name="name")
     private String name;
 

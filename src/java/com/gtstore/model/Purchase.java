@@ -28,18 +28,32 @@ public class Purchase implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    /**
+     * Date when the purchase was made
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name="createdAt")
     private Date createdAt;
     
     // Associations
     
+    /**
+     * Shopping cart that was bought
+     */
     @ManyToOne
     @JoinColumn(name="shoppingCartId")
     private ShoppingCart shoppingCart;
+    
+    /**
+     * Credit card used to make the payment
+     */
     @ManyToOne
     @JoinColumn(name="creditCardId")
     private CreditCard creditCard;
+    
+    /**
+     * User whom owns the cart
+     */
     @ManyToOne
     @JoinColumn(name="userId")
     private User user;

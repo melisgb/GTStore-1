@@ -27,10 +27,20 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    /**
+     * Title of the movie
+     */
     @Column(name="title")
     private String title;
+    /**
+     * Price of the Movie
+     */
     @Column(name="price")
     private Double price;
+    
+    /**
+     * Summary of the movie
+     */
     @Column(name="summary")
     private String summary;
 
