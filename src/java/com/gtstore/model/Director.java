@@ -100,7 +100,7 @@ public class Director implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.Director[ id=" + id + " ]";
+        return this.firstName + " " + this.lastName;
     }
     
 }

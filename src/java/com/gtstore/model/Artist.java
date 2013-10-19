@@ -33,9 +33,7 @@ public class Artist implements Serializable {
      */
     @Column(name="name")
     private String name;
-    /**
-     * Is the Artist a band?
-     */
+    
 
     // Associations
     
@@ -94,7 +92,7 @@ public class Artist implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.Artist[ id=" + id + " ]";
+        return this.name;
     }
     
 }

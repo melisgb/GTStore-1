@@ -75,7 +75,7 @@ public class UserGroup implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gtstore.model.UserGroup[ id=" + id + " ]";
+        return this.name;
     }
     
 }

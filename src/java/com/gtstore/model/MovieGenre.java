@@ -68,7 +68,7 @@ public class MovieGenre implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.MovieGenre[ id=" + id + " ]";
+        return this.name;
     }
     
 }

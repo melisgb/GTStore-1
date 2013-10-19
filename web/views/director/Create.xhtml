@@ -10,12 +10,14 @@
             <h:outputText value="#{bundle.CreateDirectorTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
             <blockquote>
                 <h2>Create Director</h2>
             </blockquote>
+            
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
             <h:form class="form-horizontal" role="form">               
                 <div class="form-group">
                     <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateDirectorLabel_id}" for="id" />

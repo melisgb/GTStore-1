@@ -113,7 +113,7 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gtstore.model.Game[ id=" + id + " ]";
+        return this.title;
     }
     
 }

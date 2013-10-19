@@ -153,7 +153,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.User[ id=" + id + " ]";
+        return this.username;
     }
     
 }

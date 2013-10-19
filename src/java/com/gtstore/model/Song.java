@@ -105,7 +105,7 @@ public class Song implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.Song[ id=" + id + " ]";
+        return this.title;
     }
     
 }

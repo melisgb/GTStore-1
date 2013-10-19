@@ -86,7 +86,7 @@ public class GameGenre implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gtstore.model.GameType[ id=" + id + " ]";
+        return this.name;
     }
     
 }

@@ -97,7 +97,7 @@ public class CreditCard implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.CreditCard[ id=" + id + " ]";
+        return this.number;
     }
     
 }

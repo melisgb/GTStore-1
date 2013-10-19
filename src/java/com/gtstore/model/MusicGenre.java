@@ -69,7 +69,7 @@ public class MusicGenre implements Serializable {
 
     @Override
     public String toString() {
-        return "com.juliantejera.jstore.MusicGenre[ id=" + id + " ]";
+        return this.name;
     }
     
 }
