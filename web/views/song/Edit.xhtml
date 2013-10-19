@@ -15,7 +15,7 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <blockquote>
-                <h2>Create Song</h2>
+                <h2>Edit Song</h2>
             </blockquote>
             <h:form class="form-horizontal" role="form">               
                 <div class="form-group">
@@ -40,6 +40,17 @@
                         </h:selectOneMenu>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.EditSongLabel_musicGenre}" for="musicGenre" />  
+                    <div class="col-lg-2">
+                        <h:selectOneMenu id="musicGenre" value="#{songController.selected.musicGenre}" title="#{bundle.EditSongTitle_musicGenre}" >
+                        <f:selectItems value="#{musicGenreController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                
+
                 <div class="form-group">
                     <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateSongLabel_price}" for="price" />
                     <div class="col-lg-10">

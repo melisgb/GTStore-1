@@ -10,24 +10,37 @@
             <h:outputText value="#{bundle.CreateMusicGenreTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <blockquote>
+                <h2>Create MusicGenre</h2>
+            </blockquote>
+
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateMusicGenreLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{musicGenreController.selected.id}" title="#{bundle.CreateMusicGenreTitle_id}" />
-                    <h:outputLabel value="#{bundle.CreateMusicGenreLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{musicGenreController.selected.name}" title="#{bundle.CreateMusicGenreTitle_name}" />
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{musicGenreController.create}" value="#{bundle.CreateMusicGenreSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{musicGenreController.prepareList}" value="#{bundle.CreateMusicGenreShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateMusicGenreIndexLink}"/>
+            <h:form class="form-horizontal" role="form">               
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMusicGenreLabel_id}" for="id" />
+                    <div class="col-lg-10">
+                        <h:inputText id="id" value="#{musicGenreController.selected.id}" title="#{bundle.CreateMusicGenreTitle_id}" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMusicGenreLabel_name}" for="name" />
+                    <div class="col-lg-10">
+                        <h:inputText id="name" value="#{musicGenreController.selected.name}" title="#{bundle.CreateMusicGenreTitle_name}" />
+                    </div>
+                </div>
+                
+                
+                
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10 btn-group">
+                        <h:commandLink class="btn btn-success" action="#{musicGenreController.create}" value="#{bundle.CreateMusicGenreSaveLink}" />
+                        <h:commandLink class="btn btn-default" action="#{musicGenreController.prepareList}" value="#{bundle.CreateMusicGenreShowAllLink}" immediate="true"/>              
+                    </div>
+                </div>
+
             </h:form>
         </ui:define>
     </ui:composition>

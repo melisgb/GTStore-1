@@ -31,7 +31,7 @@ public class ArtistController implements Serializable {
 
     public ArtistController() {
     }
-
+    
     public Artist getSelected() {
         if (current == null) {
             current = new Artist();

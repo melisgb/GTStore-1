@@ -5,6 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ViewMusicGenreTitle}"></h:outputText>
@@ -13,28 +14,38 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewMusicGenreLabel_id}"/>
-                    <h:outputText value="#{musicGenreController.selected.id}" title="#{bundle.ViewMusicGenreTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewMusicGenreLabel_name}"/>
-                    <h:outputText value="#{musicGenreController.selected.name}" title="#{bundle.ViewMusicGenreTitle_name}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{musicGenreController.destroyAndView}" value="#{bundle.ViewMusicGenreDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewMusicGenreEditLink}"/>
-                <br />
-                <h:commandLink action="#{musicGenreController.prepareCreate}" value="#{bundle.ViewMusicGenreCreateLink}" />
-                <br />
-                <h:commandLink action="#{musicGenreController.prepareList}" value="#{bundle.ViewMusicGenreShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewMusicGenreIndexLink}"/>
+            
+            <div class="row">
+                <div class="col-md-offset-1 col-lg-8">
+                    
+                    <img alt="140x140" data-src="holder.js/140x140" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAEbUlEQVR4nO3Y3YrqSABF4fP+j1IQAiEgEhBBgggiIuKII44ECSGEeoU9F4lt2m6Ysw8M/bcuPui2ohV0WZX4K8Yo4Hf9+ugTwNdCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEA8u3CKY5LpWEVOtz82bsup0ryzLlxVrN8NjtuFKeJEqSRNmk1KX9/bn2i4lCOtWpeR6rtSpyZVk+Oo9W+3KqJEmUJKmK5UHdJ3i/fmwwTXXWfrtSHoJCCFoc69fH1Adlw1hIS9UxKlZbJSEohERZlvRj2fIlpvd1qs5Hbcppf3zIdHgKptoWw9jjPM6rSf9YkilL+rHp5vLh79uPDeY4T14+pLfBdNpMR+NZqSZGnZe5QggqNpVibLTI+ni2//ytWZ4rz6faVVGx3qvIc+X5TOe21mI0TwiZjuNg2tNLtI/zuGmRBoWQaldHxdsQ6n/G+bl96WC6rlXbtTossjfBNMdSIQSVu62mo2BOZf7q2PH/x+F1kslci2mqEIKy8tjP1bbqumoI7HUw+1miEAodDsvHazfHfnVL+3ljO/wfCl26j3/vfmQwd88RxO6qWQgK061ivPTf/mypNjYqs+Fbf+veeW6lWTJaSdKFbq/marR8CqY9rxRC0PzQKF77v8tTq9geh3mHYGI9zP12O/tKvmUw99Ulm6+12yz6rSCZaH246jDvV5Hy2F+YnpZPzz3MX4IpT88X0c/BNFrlwza02Wm96K9Z8vlK53/+6leUezAv29ZEJ+Mi+7P5psEsXl3bPMy1L7NhReiPXU/6sdW5VYy1ynx0fP58vfE2mDJ9b56g2eGkIgSFkOvUxceWdN+ivqhvGUzsWtV1rbpu1Fx3/QeVFLq0j9UnpIXWq/tqUugaoy7r4S4om2oyhDBdj+9qHsHct5W2qfu5mlbXff96891FXbxf2wRls6WWRR9qOj98+PtFMEMw5fNtdYyPrSBfqY1RMbbaLfLRapBqdaoVb3ulw+32+hrVnZfDeD66wL0HM9H5nW2lPZWvtrvYnDUbr0DZ3PrN5zP6FsH8ieZWqaoq1f/7B9jqVlWqqtuX/9Euxh8cDP4MwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEA8u/ZlA7OBG9AJ8AAAAASUVORK5CYII=" class="img-thumbnail" style="width: 140px; height: 140px;"/>
+                    <h3>MusicGenre</h3>
+                    <h:form class="form" >               
 
-            </h:form>
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMusicGenreLabel_id}" for="id" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="id" value="#{musicGenreController.selected.id}" title="#{bundle.CreateMusicGenreTitle_id}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMusicGenreLabel_name}" for="name" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="name" value="#{musicGenreController.selected.name}" title="#{bundle.CreateMusicGenreTitle_name}" />
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-lg-10 btn-group">
+                            <h:commandLink class="btn btn-sm btn-warning" action="#{musicGenreController.prepareEdit}" value="#{bundle.ListMusicGenreEditLink}"/>
+                            <h:commandLink class="btn btn-sm btn-danger" action="#{musicGenreController.destroy}" value="#{bundle.ListMusicGenreDestroyLink}"/>
+                            <h:commandLink class="btn btn-sm btn-default" action="#{musicGenreController.prepareList}" value="#{bundle.CreateMusicGenreShowAllLink}" immediate="true"/>              
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
         </ui:define>
     </ui:composition>
-
 </html>

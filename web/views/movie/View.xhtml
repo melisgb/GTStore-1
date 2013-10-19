@@ -13,35 +13,51 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewMovieLabel_id}"/>
-                    <h:outputText value="#{movieController.selected.id}" title="#{bundle.ViewMovieTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewMovieLabel_title}"/>
-                    <h:outputText value="#{movieController.selected.title}" title="#{bundle.ViewMovieTitle_title}"/>
-                    <h:outputText value="#{bundle.ViewMovieLabel_summary}"/>
-                    <h:outputText value="#{movieController.selected.summary}" title="#{bundle.ViewMovieTitle_summary}"/>
-                    <h:outputText value="#{bundle.ViewMovieLabel_price}"/>
-                    <h:outputText value="#{movieController.selected.price}" title="#{bundle.ViewMovieTitle_price}"/>
-                    <h:outputText value="#{bundle.ViewMovieLabel_movieGenre}"/>
-                    <h:outputText value="#{movieController.selected.movieGenre}" title="#{bundle.ViewMovieTitle_movieGenre}"/>
-                    <h:outputText value="#{bundle.ViewMovieLabel_director}"/>
-                    <h:outputText value="#{movieController.selected.director}" title="#{bundle.ViewMovieTitle_director}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{movieController.destroyAndView}" value="#{bundle.ViewMovieDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewMovieEditLink}"/>
-                <br />
-                <h:commandLink action="#{movieController.prepareCreate}" value="#{bundle.ViewMovieCreateLink}" />
-                <br />
-                <h:commandLink action="#{movieController.prepareList}" value="#{bundle.ViewMovieShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewMovieIndexLink}"/>
+            
+            <div class="row">
+                <div class="col-md-offset-1 col-lg-8">
+                    
+                    <img alt="140x140" data-src="holder.js/140x140" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAEbUlEQVR4nO3Y3YrqSABF4fP+j1IQAiEgEhBBgggiIuKII44ECSGEeoU9F4lt2m6Ysw8M/bcuPui2ohV0WZX4K8Yo4Hf9+ugTwNdCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEA8u3CKY5LpWEVOtz82bsup0ryzLlxVrN8NjtuFKeJEqSRNmk1KX9/bn2i4lCOtWpeR6rtSpyZVk+Oo9W+3KqJEmUJKmK5UHdJ3i/fmwwTXXWfrtSHoJCCFoc69fH1Adlw1hIS9UxKlZbJSEohERZlvRj2fIlpvd1qs5Hbcppf3zIdHgKptoWw9jjPM6rSf9YkilL+rHp5vLh79uPDeY4T14+pLfBdNpMR+NZqSZGnZe5QggqNpVibLTI+ni2//ytWZ4rz6faVVGx3qvIc+X5TOe21mI0TwiZjuNg2tNLtI/zuGmRBoWQaldHxdsQ6n/G+bl96WC6rlXbtTossjfBNMdSIQSVu62mo2BOZf7q2PH/x+F1kslci2mqEIKy8tjP1bbqumoI7HUw+1miEAodDsvHazfHfnVL+3ljO/wfCl26j3/vfmQwd88RxO6qWQgK061ivPTf/mypNjYqs+Fbf+veeW6lWTJaSdKFbq/marR8CqY9rxRC0PzQKF77v8tTq9geh3mHYGI9zP12O/tKvmUw99Ulm6+12yz6rSCZaH246jDvV5Hy2F+YnpZPzz3MX4IpT88X0c/BNFrlwza02Wm96K9Z8vlK53/+6leUezAv29ZEJ+Mi+7P5psEsXl3bPMy1L7NhReiPXU/6sdW5VYy1ynx0fP58vfE2mDJ9b56g2eGkIgSFkOvUxceWdN+ivqhvGUzsWtV1rbpu1Fx3/QeVFLq0j9UnpIXWq/tqUugaoy7r4S4om2oyhDBdj+9qHsHct5W2qfu5mlbXff96891FXbxf2wRls6WWRR9qOj98+PtFMEMw5fNtdYyPrSBfqY1RMbbaLfLRapBqdaoVb3ulw+32+hrVnZfDeD66wL0HM9H5nW2lPZWvtrvYnDUbr0DZ3PrN5zP6FsH8ieZWqaoq1f/7B9jqVlWqqtuX/9Euxh8cDP4MwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEAwvBwEIwsBAMLAQDC8HAQjCwEAwsBAMLwcBCMLAQDCwEA8u/ZlA7OBG9AJ8AAAAASUVORK5CYII=" class="img-thumbnail" style="width: 140px; height: 140px;"/>
+                    <h3>Movie</h3>
+                    <h:form class="form" >               
 
-            </h:form>
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMovieLabel_id}" for="id" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="id" value="#{movieController.selected.id}" title="#{bundle.CreateMovieTitle_id}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMovieLabel_title}" for="title" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="title" value="#{movieController.selected.title}" title="#{bundle.CreateMovieTitle_title}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="Artist" for="firstName" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="firstName" value="#{movieController.selected.director.firstName}" title="#{bundle.ViewMovieTitle_firstName}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateMovieLabel_price}" for="price" />
+                            <div class="col-lg-10">
+                                <h:outputText class="form-control" id="price" value="#{movieController.selected.price}" title="#{bundle.CreateMovieTitle_price}" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10 btn-group">
+                            <h:commandLink class="btn btn-sm btn-warning" action="#{movieController.prepareEdit}" value="#{bundle.ListMovieEditLink}"/>
+                            <h:commandLink class="btn btn-sm btn-danger" action="#{movieController.destroy}" value="#{bundle.ListMovieDestroyLink}"/>
+                            <h:commandLink class="btn btn-sm btn-default" action="#{movieController.prepareList}" value="#{bundle.CreateMovieShowAllLink}" immediate="true"/>              
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
         </ui:define>
     </ui:composition>
 

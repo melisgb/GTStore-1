@@ -10,24 +10,37 @@
             <h:outputText value="#{bundle.CreateGameGenreTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+            <blockquote>
+                <h2>Create GameGenre</h2>
+            </blockquote>
+
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateGameGenreLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{gameGenreController.selected.id}" title="#{bundle.CreateGameGenreTitle_id}" />
-                    <h:outputLabel value="#{bundle.CreateGameGenreLabel_name}" for="name" />
-                    <h:inputText id="name" value="#{gameGenreController.selected.name}" title="#{bundle.CreateGameGenreTitle_name}" />
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{gameGenreController.create}" value="#{bundle.CreateGameGenreSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{gameGenreController.prepareList}" value="#{bundle.CreateGameGenreShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateGameGenreIndexLink}"/>
+            <h:form class="form-horizontal" role="form">               
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateGameGenreLabel_id}" for="id" />
+                    <div class="col-lg-10">
+                        <h:inputText id="id" value="#{gameGenreController.selected.id}" title="#{bundle.CreateGameGenreTitle_id}" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateGameGenreLabel_name}" for="name" />
+                    <div class="col-lg-10">
+                        <h:inputText id="name" value="#{gameGenreController.selected.name}" title="#{bundle.CreateGameGenreTitle_name}" />
+                    </div>
+                </div>
+                
+                
+                
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10 btn-group">
+                        <h:commandLink class="btn btn-success" action="#{gameGenreController.create}" value="#{bundle.CreateGameGenreSaveLink}" />
+                        <h:commandLink class="btn btn-default" action="#{gameGenreController.prepareList}" value="#{bundle.CreateGameGenreShowAllLink}" immediate="true"/>              
+                    </div>
+                </div>
+
             </h:form>
         </ui:define>
     </ui:composition>
