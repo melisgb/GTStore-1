@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <object type="{0C55C096-0F1D-4F28-AAA2-85EF591126E7}" cotype="cs" id="cosymantecbfw" style="width: 0px; height: 0px; display: block;"></object>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>GTStore</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="./responsive.css" rel="stylesheet" type="text/css" />
+        <link href="css" rel="stylesheet" type="text/css" />
+        <link href="css(1)" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./jquery.js"></script>
+        <!--Menu Anim-->
+        <script src="./bootstrap.min.js"></script>
+        <script type="text/javascript" id="waxCS">var WAX = function() {
+                var _arrInputs;
+                window.addEventListener('waxSetArr', function(evt) {
+                    _arrInputs = evt.detail;
+                });
+                return {getElement: function(i) {
+                        return _arrInputs[i];
+                    }}
+            }();
+            function waxGetElement(i) {
+                return WAX.getElement(i);
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <!-- Start: Navigation wrapper -->
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner opensans">
+                    <div class="container"> <a href="login.xhtml" class="brand">Bootbusiness</a>
+                        <!-- Below button used for responsive navigation -->
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <!-- Start: Primary navigation -->
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+                                <li>
+                                    <a style="color:red;font-weight:bold;" href="#">
+                                        <h:outputText value="#{uiLoginController.current.username}" />
+                                    </a>  
+                                </li>
+                                <li> 
+                                    <a href="login.xhtml">
+                                        Login
+                                    </a> 
+                                </li>
+                                <li><a href="checkout.xhtml">Checkout</a></li>
+                                <li> <a href="carts.xhtml" class="btn btn-success opensans cart">Carts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Navigation wrapper -->
+            <div class="navbar main-nav">
+                <div class="navbar-inner opensans">
+                    <div class="container">
+                        <!-- Below button used for responsive navigation -->
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".second"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <!-- Start: Primary navigation -->
+                        <div class="nav-collapse collapse second">
+                            <ul class="nav pull-left inner-nav">
+                                <li><a href="login.xhtml">Home</a></li>
+                                <li><a href="movies.xhtml">Movies</a></li>
+                                <li><a href="music.xhtml">Music Albums</a></li>
+                                <li><a href="games.xhtml">Games</a></li>
+                                <li><a href="contactus.xhtml">Contact Us</a></li>
+                            </ul>
+                            <h:form class="pull-right search-wrap">
+                                <input type="text" placeholder="Search" class="top-search" />
+                                <input type="submit" value=" " style="top:6px;" class="icon-search sear-btn" />
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="title">
+            <div class="container">
+                <h2>Login</h2>
+            </div>
+        </div>
+        <div class="login-form">
+            <div class="container">
+                <h:form>
+                    <fieldset>
+                        <label>username<span style="color:red">*</span></label>
+                        <h:inputText id="user" value="#{uiLoginController.current.username}" />
+                        <label>password<span style="color:red">*</span></label>
+                        <h:inputSecret id="id" value="#{uiLoginController.current.password}" />
+                        <p>
+                            <h:commandButton action="#{uiLoginController.authenticate}" value="Login" class="btn btn-success" />
+                        </p>
+                    </fieldset>
+                </h:form>
+            </div>
+        </div>
+        <span class="footer-top"></span>
+        <footer id="footer">
+            <div class="container">
+                <div class="span3">
+                    <h2 class="dosis-regular">About Us</h2>
+                    <p>Online shopping for you.</p>
+                </div>
+
+                <div id="footer-bottom"> <span class="divider"></span>
+                    <div class="container copyrights">
+                        <p>©2013 All Rights Reserved. Designed by <a href="#">GTStore</a> <a href="#top" class="move-top pull-right"></a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>
+

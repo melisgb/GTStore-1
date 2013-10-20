@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/views/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDirectorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <blockquote>
+                <h2>Create Director</h2>
+            </blockquote>
+            <h:form class="form-horizontal" >               
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateDirectorLabel_id}" for="id" />
+                    <div class="col-lg-10">
+                        <h:inputText id="id" value="#{directorController.selected.id}" title="#{bundle.CreateDirectorTitle_id}" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateDirectorLabel_firstName}" for="firstName" />
+                    <div class="col-lg-10">
+                        <h:inputText id="firstName" value="#{directorController.selected.firstName}" title="#{bundle.CreateDirectorTitle_firstName}" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <h:outputLabel class="col-lg-2 control-label" value="#{bundle.CreateDirectorLabel_lastName}" for="lastName" />
+                    <div class="col-lg-10">
+                        <h:inputText id="lastName" value="#{directorController.selected.lastName}" title="#{bundle.CreateDirectorTitle_lastName}" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10 btn-group">
+                        <h:commandLink class="btn btn-success" action="#{directorController.create}" value="#{bundle.CreateDirectorSaveLink}" />
+                        <h:commandLink class="btn btn-default" action="#{directorController.prepareList}" value="#{bundle.CreateDirectorShowAllLink}" immediate="true"/>              
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/views/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewShoppingCartSongTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewShoppingCartSongLabel_id}"/>
+                    <h:outputText value="#{shoppingCartSongController.selected.id}" title="#{bundle.ViewShoppingCartSongTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewShoppingCartSongLabel_shoppingCart}"/>
+                    <h:outputText value="#{shoppingCartSongController.selected.shoppingCart}" title="#{bundle.ViewShoppingCartSongTitle_shoppingCart}"/>
+                    <h:outputText value="#{bundle.ViewShoppingCartSongLabel_song}"/>
+                    <h:outputText value="#{shoppingCartSongController.selected.song}" title="#{bundle.ViewShoppingCartSongTitle_song}"/>
+                    <h:outputText value="#{bundle.ViewShoppingCartSongLabel_amount}"/>
+                    <h:outputText value="#{shoppingCartSongController.selected.amount}" title="#{bundle.ViewShoppingCartSongTitle_amount}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{shoppingCartSongController.destroyAndView}" value="#{bundle.ViewShoppingCartSongDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewShoppingCartSongEditLink}"/>
+                <br />
+                <h:commandLink action="#{shoppingCartSongController.prepareCreate}" value="#{bundle.ViewShoppingCartSongCreateLink}" />
+                <br />
+                <h:commandLink action="#{shoppingCartSongController.prepareList}" value="#{bundle.ViewShoppingCartSongShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewShoppingCartSongIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

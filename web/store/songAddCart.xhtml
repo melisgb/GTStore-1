@@ -1,0 +1,48 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <ui:composition template="template.xhtml">
+        <ui:define name="title">
+            Song:
+        </ui:define>
+        <ui:define name="suffix">
+            Selected Song
+        </ui:define>
+        <ui:define name="items">
+            <div class="login-form">
+                <div class="container">
+                    <fieldset>
+                        <label>Name:</label>
+                        <h:outputText id="title" value="#{songController.selected.title}" />
+                        <br/>
+                        <label>Price:</label>
+                        <h:outputText id="price" value="#{songController.selected.price}" />
+                        <br/>
+                        <label>Genre:</label>
+                        <h:outputText id="name" value="#{songController.selected.songGenre.name}" />
+                        <br/>
+                        <label>Artist</label>
+                        <h:outputText id="name" value="#{songController.selected.artist.name}" />
+                        <br/>
+                        <p>
+                            <h:form>
+                                <h:selectOneMenu value="#{songController.shoppingCart}" style="margin:5px;" >
+                                    <ui:repeat value="#{userController.selected.shoppingCarts}" var="sc">
+                                        <f:selectItem itemValue="#{sc.id}" itemLabel="#{sc.name}" />
+                                    </ui:repeat>
+                                </h:selectOneMenu>
+                                <h:commandButton action="#{songController.assignToUser}" value="Add to Cart" class="btn btn-success" />
+                            </h:form>
+                        </p>
+                    </fieldset>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

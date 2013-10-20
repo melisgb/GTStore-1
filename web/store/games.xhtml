@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <ui:composition template="template.xhtml">
+        <ui:define name="title">
+            Games
+        </ui:define>
+        <ui:define name="items">
+            <ul class="thumbnails">
+                <ui:repeat value="#{gameController.items}" var="game" >
+                    <li class="span3" style="margin:5px 15px;">
+                        <div class="thumbnail"> <img src="../gamesicon.jpg" alt="" />
+                            <div class="caption">
+                                <h4><h:outputText value="#{game.title}"></h:outputText></h4>
+
+                                <p>
+                                    <h:outputText value="#{game.gameGenre.name}" ></h:outputText>
+                                    <br />
+                                </p>
+                                <p>
+                                    <h:commandButton action="#{gameController.prepareBuy}" value="ADD CART" />
+                                    <span class="price pull-right">
+                                        <h:outputText value="#{game.price}" ></h:outputText>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>

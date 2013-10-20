@@ -1,0 +1,41 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <ui:composition template="template.xhtml">
+        <ui:define name="title">
+            Music
+        </ui:define>
+        <ui:define name="items">
+            <ul class="thumbnails">
+                <ui:repeat value="#{songController.items}" var="song" >
+                  <li class="span3" style="margin:5px 15px;">
+               
+                    <div class="thumbnail"> <img src="../albumicon.jpg" alt="" />
+                        <div class="caption">
+                            <h4><h:outputText value="#{song.title}"></h:outputText></h4>
+                            
+                            <p>
+                                <h:outputText value="#{song.musicGenre.name}" ></h:outputText>
+                                <br />
+                                <h:outputText value="#{song.artist.name}" ></h:outputText>
+                            </p>
+                            <p>
+                                <h:commandButton  class="btn ad-to" action="#{songController.prepareBuy}" value="ADD CART" />
+                                <span class="price pull-right">
+                                    #{song.price}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                </ui:repeat>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>

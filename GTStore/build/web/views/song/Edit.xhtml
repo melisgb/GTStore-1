@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSongTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSongLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{songController.selected.id}" title="#{bundle.EditSongTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditSongLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{songController.selected.title}" title="#{bundle.EditSongTitle_title}" />
+                    <h:outputLabel value="#{bundle.EditSongLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{songController.selected.price}" title="#{bundle.EditSongTitle_price}" />
+                    <h:outputLabel value="#{bundle.EditSongLabel_artist}" for="artist" />
+                    <h:selectOneMenu id="artist" value="#{songController.selected.artist}" title="#{bundle.EditSongTitle_artist}" >
+                        <f:selectItems value="#{artistController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSongLabel_musicGenre}" for="musicGenre" />
+                    <h:selectOneMenu id="musicGenre" value="#{songController.selected.musicGenre}" title="#{bundle.EditSongTitle_musicGenre}" >
+                        <f:selectItems value="#{musicGenreController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{songController.update}" value="#{bundle.EditSongSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSongViewLink}"/>
+                <br />
+                <h:commandLink action="#{songController.prepareList}" value="#{bundle.EditSongShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSongIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <head>
+        <title>GTStore</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.css" rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="./responsive.css" rel="stylesheet" type="text/css" />
+        <link href="css" rel="stylesheet" type="text/css" />
+        <link href="css(1)" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./jquery.js"></script>
+        <!--Menu Anim-->
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <!-- Start: Navigation wrapper -->
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner opensans">
+                    <div class="container"> <a href="login.xhtml" class="brand">Bootbusiness</a>
+                        <!-- Below button used for responsive navigation -->
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <!-- Start: Primary navigation -->
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+                                <li> 
+                                    <a style="color:red;font-weight:bold;" href="#">
+                                        <h:outputText value="#{uiLoginController.current.username}" />
+                                    </a>  
+                                </li>
+                                <li> <h:outputText value="#{uiLoginController.current.username}" /> </li><li><a href="login.xhtml">Login</a> </li>
+                                <li><a href="checkout.xhtml">Checkout</a></li>
+                                <li> <a href="carts.xhtml" class="btn btn-success opensans cart">Carts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Navigation wrapper -->
+            <div class="navbar main-nav">
+                <div class="navbar-inner opensans">
+                    <div class="container">
+                        <!-- Below button used for responsive navigation -->
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".second"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <!-- Start: Primary navigation -->
+                        <div class="nav-collapse collapse second">
+                            <ul class="nav pull-left inner-nav">
+                                <li><a href="login.xhtml">Home</a></li>
+                                <li><a href="movies.xhtml">Movies</a></li>
+                                <li><a href="music.xhtml">Music Albums</a></li>
+                                <li><a href="games.xhtml">Games</a></li>
+                                <li><a href="contactus.xhtml">Contact Us</a></li>
+                            </ul>
+                            <form name="" class="pull-right search-wrap">
+                                <input type="text" placeholder="Search" class="top-search"/>
+                                <input type="submit" value=" " style="top:6px;" class="icon-search sear-btn"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="title">
+            <div class="container">
+                <h3>Contact</h3>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="container">
+                <div class="span8">
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                            <h3 class="add-comment">Contact Form</h3>
+
+                            <div class="control-group">
+                                <label class="control-label span2" for="inputName">Name:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputName"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label span2" for="inputEmail">Email:</label>
+                                <div class="controls">
+                                    <input type="text" id="inputEmail"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label span2" for="inputMessage">Message:</label>
+                                <div class="controls">
+                                    <textarea id="inputMessage" class="span6"></textarea>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" class="btn btn-success pull-right">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="span3 contact-details">
+                    <h3>Contact Details</h3>
+                    <p>
+                        Address: INTEC
+                        <br/>
+                        Phone: 809-567-9271
+                        <br/>
+                        Fax: 809-555-0000
+                        <br/>
+                        Web: http://gtstore.com
+                    </p>
+                </div>
+            </div>
+        </div>
+        <span class="footer-top"></span>
+        <footer id="footer">
+            <div class="container">
+                <div class="span3">
+                    <h2 class="dosis-regular">About Us</h2>
+                    <p>Online shopping for you.</p>
+                </div>
+
+                <div id="footer-bottom"> 
+                    <span class="divider">
+                    </span>
+                    <div class="container copyrights">
+                        <p>©2013 All Rights Reserved. Designed by 
+                            <a href="#">GTStore</a> 
+                            <a href="#top" class="move-top pull-right">
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
